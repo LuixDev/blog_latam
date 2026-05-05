@@ -36,7 +36,7 @@ export default async function Home() {
                   Destacado
                 </span>
                 <span className="text-slate-400 text-sm font-medium">
-                  {featuredPost.category} • {featuredPost.readTime}
+                  {featuredPost.category} • {featuredPost.read_time}
                 </span>
               </div>
               <h1 className="font-outfit text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight transition-colors group-hover:text-emerald-600">
@@ -83,7 +83,7 @@ export default async function Home() {
                   {post.summary}
                 </p>
                 <p className="text-xs text-slate-400 font-medium mt-2">
-                  {new Date(post.date).toLocaleDateString()} • {post.readTime}
+                  {new Date(post.date).toLocaleDateString()} • {post.read_time}
                 </p>
               </div>
             </Link>

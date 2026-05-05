@@ -51,9 +51,9 @@ export async function runAgentCore() {
     - 3 secciones con subtítulos en NEGRITA (sin #).
     - Conclusión elegante.
     - Mínimo 500 palabras.
-    - Formato JSON: title, summary, content, category, readTime.
+    - Formato JSON: title, summary, content, category, read_time.
     - category: "${chosen.category}".
-    - readTime: "X min lectura".
+    - read_time: "X min lectura".
     - Idioma: Español.
   `;
 
@@ -77,7 +77,10 @@ export async function runAgentCore() {
     image,
   };
 
-  const { error } = await supabase.from("posts").insert([finalData]);
+  const { error } = await supabase.from("posts").insert([{
+      ...finalData,
+      read_time: finalData.read_time
+    }]);
   if (error) throw error;
 
   return finalData;

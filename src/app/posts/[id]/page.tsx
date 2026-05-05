@@ -45,7 +45,7 @@ export default async function PostDetail({ params }: PageProps) {
               <span className="h-1 w-1 rounded-full bg-white/40"></span>
               <span>{new Date(post.date).toLocaleDateString()}</span>
               <span className="h-1 w-1 rounded-full bg-white/40"></span>
-              <span>{post.readTime}</span>
+              <span>{post.read_time}</span>
             </div>
           </div>
         </div>

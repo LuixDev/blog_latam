@@ -41,7 +41,7 @@ export default async function NoticiasPage() {
                 {post.summary}
               </p>
               <p className="text-xs text-slate-400 font-medium mt-2">
-                {new Date(post.date).toLocaleDateString()} • {post.readTime}
+                {new Date(post.date).toLocaleDateString()} • {post.read_time}
               </p>
             </div>
           </Link>

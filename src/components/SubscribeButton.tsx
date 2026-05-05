@@ -13,18 +13,30 @@ export default function SubscribeButton() {
     setMounted(true);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-    // Simulación de envío
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) throw new Error("Fallo al suscribir");
+
       setStatus("success");
       setTimeout(() => {
         setIsOpen(false);
         setStatus("idle");
         setEmail("");
-      }, 2000);
-    }, 1500);
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+      alert("Hubo un error al suscribirte. Intenta de nuevo.");
+      setStatus("idle");
+    }
   };
 
   const modalContent = isOpen && mounted ? (
