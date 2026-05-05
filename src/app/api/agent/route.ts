@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const authHeader = request.headers.get("authorization");
     const secretKey = process.env.AGENT_SECRET_KEY;
 
-    if (!authHeader || authHeader !== `Bearer ${secretKey}`) {
+    if (!authHeader || authHeader.trim() !== `Bearer ${secretKey?.trim()}`) {
       return NextResponse.json({ error: "No autorizado" }, { status: 401 });
     }
 
