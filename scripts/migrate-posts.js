@@ -28,6 +28,11 @@ async function migrate() {
       post.read_time = post.readTime;
       delete post.readTime;
     }
+
+    // Limpiar símbolos #
+    if (post.content) {
+      post.content = post.content.replace(/^#+\s*(.*)$/gm, '**$1**').replace(/#+/g, '');
+    }
     
     const { error } = await supabase.from('posts').upsert([post]);
     

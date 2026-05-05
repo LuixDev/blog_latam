@@ -77,8 +77,12 @@ export async function runAgentCore() {
     image,
   };
 
+  // Limpieza de seguridad para asegurar que no haya símbolos # en el contenido
+  const sanitizedContent = finalData.content.replace(/^#+\s*(.*)$/gm, '**$1**').replace(/#+/g, '');
+
   const { error } = await supabase.from("posts").insert([{
       ...finalData,
+      content: sanitizedContent,
       read_time: finalData.read_time
     }]);
   if (error) throw error;
