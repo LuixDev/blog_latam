@@ -23,7 +23,12 @@ async function migrate() {
   for (const file of files) {
     const post = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
     
-    // Adaptar contenido si es necesario (limpiar markdown feo si existe)
+    // Mapear campos para que coincidan con la DB
+    if (post.readTime) {
+      post.read_time = post.readTime;
+      delete post.readTime;
+    }
+    
     const { error } = await supabase.from('posts').upsert([post]);
     
     if (error) {
