@@ -21,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <meta name="google-site-verification" content="D41o2B4tR1V6D96YnmPR8IIC1ixQnScqE0u_-DII0rg" />
+      </head>
       <body className={`${inter.variable} ${outfit.variable} font-sans antialiased selection:bg-emerald-500/10 text-slate-900`}>
         <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-50/50 via-white to-white"></div>
         <div className="fixed inset-0 -z-10 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0.5))] opacity-20"></div>
@@ -42,3 +45,4 @@ export default function RootLayout({
     </html>
   );
 }
+
